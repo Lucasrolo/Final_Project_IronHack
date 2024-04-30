@@ -75,7 +75,17 @@ document.addEventListener("DOMContentLoaded", function() {
       currentCircleIndex = 0;
     });
   });
-
+  
+    // Function to reset circle selections
+    function resetCircles() {
+      const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
+      circles.forEach(function(circle) {
+        circle.style.backgroundColor = '#e4e4e4';
+      });
+      player = [];
+      currentCircleIndex = 0;
+    }
+  
   // Function to compare secret code with player's code
   function compareCodes(playerCode) {
     let result = { exact: 0, partial: 0 };
@@ -104,15 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return result;
   }
 
-    // Function to reset circle selections
-    function resetCircles() {
-      const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
-      circles.forEach(function(circle) {
-        circle.style.backgroundColor = '#e4e4e4';
-      });
-      player = [];
-      currentCircleIndex = 0;
-    }
+  
 
   // Event listener for each color button to select colors
     const colorButtons = document.querySelectorAll(".colors_control .circle");
@@ -130,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Event listener for retry button to reload the page
   document.getElementById("retryButton").addEventListener("click", function() {
-      let currentTryIndex = 0;
+    let currentTryIndex = 0;
     let currentCircleIndex = 0;
     let player = [];
     let startTime = Date.now();
