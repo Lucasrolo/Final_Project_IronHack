@@ -34,7 +34,7 @@
   }
 
   .timer{
-    color: black;
+    color: #000000;
   }
 
   .bubble_valid {
@@ -56,11 +56,11 @@
   }
 
   .valid-exact {
-    background-color: black;
+    background-color: #000000;
   }
   
   .valid-partial {
-    background-color: grey;
+    background-color: #808080;
   }
   
   .valid-empty {
@@ -154,7 +154,7 @@
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #000000;
   text-decoration: none;
   cursor: pointer;
 }
@@ -186,24 +186,25 @@
   }
 
   #red{
-    background-color: red;
+    background-color: #ff0000;
   }
   #blue{
-    background-color: blue;
+    background-color: #0000ff;
   }
   #black{
-    background-color: black;
+    background-color: #000000;
   }
   #green{
-    background-color: green;
+    background-color: #008000;
   }
   #purple{
-    background-color: purple;
+    background-color: #800080;
   }
   #orange{
-    background-color: orange;
+    background-color: #ffa500;
   }
   #grey{
-    background-color: grey;
+    background-color: #808080;
   }
+
 
