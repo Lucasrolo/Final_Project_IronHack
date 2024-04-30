@@ -74,17 +74,6 @@ document.addEventListener("DOMContentLoaded", function() {
       currentCircleIndex = 0;
     });
   });
-/*
-  // Function to reset circle selections
-  function resetCircles() {
-    const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
-    circles.forEach(function(circle) {
-      circle.style.backgroundColor = '#e4e4e4';
-    });
-    player = [];
-    currentCircleIndex = 0;
-  }
-  */
 
   // Function to compare secret code with player's code
   function compareCodes(playerCode) {
@@ -189,9 +178,6 @@ document.addEventListener("DOMContentLoaded", function() {
         tries[currentTryIndex].classList.add("selected");
       }
     }
-
-    // Reset circle selections
-    resetCircles();
 
   });
 
