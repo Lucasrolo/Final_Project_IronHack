@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return secretCode;
   }
 
+  /*
   // Event listener for each try element to handle selection
   tries.forEach(function(tryElement) {
     tryElement.addEventListener("click", function() {
@@ -57,6 +58,8 @@ document.addEventListener("DOMContentLoaded", function() {
       tryElement.classList.add("selected");
     });
   });
+
+  */
 
   // Event listener for each clear button to clear selections
   clearButtons.forEach(function(clearButton) {
