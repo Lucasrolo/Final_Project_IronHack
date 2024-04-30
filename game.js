@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
       currentCircleIndex = 0;
     });
   });
-
+/*
   // Function to reset circle selections
   function resetCircles() {
     const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function() {
     player = [];
     currentCircleIndex = 0;
   }
+  */
 
   // Function to compare secret code with player's code
   function compareCodes(playerCode) {
