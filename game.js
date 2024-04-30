@@ -114,12 +114,80 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Event listener for each color button to select colors
-  const colorButtons = document.querySelectorAll(".colors_control .circle");
-  colorButtons.forEach(function(button) {
-    button.addEventListener("click", function() {
-      const color = button.id;
-      if (currentCircleIndex < 4) {
-        const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
-        circles[currentCircleIndex].style.backgroundColor = color;
-        player[currentCircleIndex] = color; // Add color to player's array
-        
+    const colorButtons = document.querySelectorAll(".colors_control .circle");
+    colorButtons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        const color = button.id;
+        if (currentCircleIndex < 4) {
+          const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
+          circles[currentCircleIndex].style.backgroundColor = color;
+          player[currentCircleIndex] = color; // Add color to player's array
+          currentCircleIndex++;
+        }
+      });
+    });
+
+  // Event listener for retry button to reload the page
+  document.getElementById("retryButton").addEventListener("click", function() {
+    window.location.reload();
+  });
+
+  // Event listener for validate button to compare codes and show results
+  document.getElementById("validbutton").addEventListener("click", function() {
+
+    // Compare codes and get the result
+    const result = compareCodes(player);
+
+    // Remove 'selected' class from all tries
+    tries.forEach(function(tryElement) {
+      tryElement.classList.remove("selected");
+    });
+
+    // Add 'selected' class to the next try
+    tries[currentTryIndex + 1].classList.add("selected");
+
+    // Update validation points based on results
+    const validationDiv = tries[currentTryIndex].querySelector(".validation");
+    const bubbles = validationDiv.querySelectorAll(".bubble_valid");
+    for (let i = 0; i < result.exact; i++) {
+      bubbles[i].classList.add("valid-exact");
+    }
+    for (let i = result.exact; i < result.exact + result.partial; i++) {
+      bubbles[i].classList.add("valid-partial");
+    }
+    for (let i = result.exact + result.partial; i < bubbles.length; i++) {
+      bubbles[i].classList.add("valid-empty");
+    }
+
+    // Select modal and modal message elements
+    const modal = document.getElementById("myModal");
+    const modalMessage = document.getElementById("modalMessage");
+
+    // Select close button and define its onclick function
+    const closeButton = document.getElementsByClassName("close")[0];
+    closeButton.onclick = function() {
+      modal.style.display = "none";
+    };
+
+    // Display modal with appropriate message based on result
+    if (result.exact === 4) {
+      const elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+      modal.style.display = "block";
+      modalMessage.innerHTML = "Congratulations! You won in : " + elapsedTime + " seconds ! <br>The code was : " + secretCode;
+      currentTryIndex++;
+    } else {
+      currentTryIndex++;
+      if (currentTryIndex >= tries.length - 1) {
+        modal.style.display = "block";
+        modalMessage.innerHTML = "Game Over the secret code was : <br>" + secretCode;
+      } else {
+        tries[currentTryIndex].classList.add("selected");
+      }
+    }
+
+    // Reset circle selections
+    resetCircles();
+
+  });
+
+});
