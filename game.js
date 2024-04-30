@@ -129,6 +129,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   // Event listener for retry button to reload the page
   document.getElementById("retryButton").addEventListener("click", function() {
+      let currentTryIndex = 0;
+    let currentCircleIndex = 0;
+    let player = [];
+    let startTime = Date.now();
     window.location.reload();
   });
 
