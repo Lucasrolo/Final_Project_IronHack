@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
     return secretCode;
   }
 
-  // Event listener for each try element to handle selection
+    // Event listener for each try element to handle selection
   tries.forEach(function(tryElement) {
     tryElement.addEventListener("click", function() {
       // Remove the 'selected' class from all tries
@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
       tryElement.classList.add("selected");
     });
   });
+
 
   // Event listener for each clear button to clear selections
   clearButtons.forEach(function(clearButton) {
@@ -102,6 +103,16 @@ document.addEventListener("DOMContentLoaded", function() {
     result.partial = result.partial - result.exact;
     return result;
   }
+
+    // Function to reset circle selections
+    function resetCircles() {
+      const circles = tries[currentTryIndex].querySelectorAll(".circle_try");
+      circles.forEach(function(circle) {
+        circle.style.backgroundColor = '#e4e4e4';
+      });
+      player = [];
+      currentCircleIndex = 0;
+    }
 
   // Event listener for each color button to select colors
     const colorButtons = document.querySelectorAll(".colors_control .circle");
@@ -178,6 +189,8 @@ document.addEventListener("DOMContentLoaded", function() {
         tries[currentTryIndex].classList.add("selected");
       }
     }
+
+    resetCircles();
 
   });
 
